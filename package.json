@@ -1,0 +1,36 @@
+{
+  "name": "react-rolling-numbers-onscroll",
+  "version": "1.0.0",
+  "description": "react rolling numbers onscroll",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suti1979/react-rolling-numbers-onscroll.git"
+  },
+  "keywords": [
+    "react",
+    "rolling",
+    "numbers",
+    "onscroll"
+  ],
+  "author": "ledurts-sti",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/suti1979/react-rolling-numbers-onscroll/issues"
+  },
+  "homepage": "https://github.com/suti1979/react-rolling-numbers-onscroll#readme",
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-intersection-observer": "^9.5.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.20",
+    "typescript": "^5.1.6"
+  }
+}
