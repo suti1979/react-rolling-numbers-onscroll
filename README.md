@@ -2,17 +2,17 @@
 
 A simple react component
 
-Usage:
+Import:
 
 `import RollingNumbers from "react-rolling-numbers-onscroll"`
 
-Component & props:
-
-- num: Integer to roll up from 0
-- millis (optional): miliseconds for animation effect. By default is 500.
+Usage:
 
 `<RollingNumbers num={42} millis={3000} />`
 
-That's it.
+- num: Integer to roll up from 0
+- millis (optional): milliseconds for animation effect. By default it is 500.
+
+That's it for now.
 
 Feel free to ask or contribute. ;)
