@@ -1,6 +1,6 @@
 # React rolling numbers onscroll
 
-A React component the animation rolling numbers from zero (or "from" number) to the actual number.
+A React component for animate (roll) numbers from zero (or the "from" number) to the actual number.
 Starts, when the element is in the view.
 
 ## Install:
@@ -31,4 +31,5 @@ That's it for now.
 Feel free to ask or contribute. ;)
 
 CHANGELOG:
-1.1.0 - Added "from" prop.
+
+- 1.1.0 - Added "from" prop.
