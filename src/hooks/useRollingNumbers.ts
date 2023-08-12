@@ -3,23 +3,24 @@ import { useEffect, useState } from "react";
 
 export default function useNumberRolling(
   num: number,
+  from: number = 0,
   millis: number = 500
-): [number, (node: HTMLDivElement | null) => void] {
-  const [currentValue, setCurrentValue] = useState(0);
+): [number, (node: HTMLSpanElement | null) => void] {
+  const [currentValue, setCurrentValue] = useState(from);
   const { ref, inView } = useInView({
     threshold: 0,
   });
 
   useEffect(() => {
     if (inView) {
-      setCurrentValue(0);
+      setCurrentValue(from);
     }
   }, [inView]);
 
   useEffect(() => {
     const startTime = performance.now();
     const endTime = startTime + millis;
-    const increment = num / millis;
+    const increment = (num - from) / millis;
 
     let animationFrame: number;
 
@@ -28,7 +29,15 @@ export default function useNumberRolling(
 
       if (currentTime < endTime) {
         const timePassed = currentTime - startTime;
-        setCurrentValue(Math.min(Math.round(increment * timePassed), num));
+        setCurrentValue(
+          Math.min(
+            Math.max(
+              Math.round(increment * timePassed) + from,
+              Math.min(from, num)
+            ),
+            Math.max(from, num)
+          )
+        );
         animationFrame = requestAnimationFrame(updateValue);
       } else {
         setCurrentValue(num);
@@ -42,7 +51,7 @@ export default function useNumberRolling(
     return () => {
       cancelAnimationFrame(animationFrame);
     };
-  }, [num, inView, millis]);
+  }, [num, from, inView, millis]);
 
   return [currentValue, ref];
 }
