@@ -3,11 +3,6 @@
 A React component for animate (roll) numbers from zero (or the "from" number) to the actual number.
 Starts, when the element is in the view.
 
-## Install:
-
-- `npm i react-rolling-numbers-onscroll`
-- `yarn add react-rolling-numbers-onscroll`
-
 ## Import:
 
 - `import RollingNumbers from "react-rolling-numbers-onscroll"`
