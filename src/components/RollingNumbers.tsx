@@ -1,4 +1,4 @@
-import useNumberRolling from "../hooks/useRollingNumbers";
+import useNumberRolling from '../hooks/useRollingNumbers'
 
 export default function RollingNumbers({
   num,
@@ -7,13 +7,13 @@ export default function RollingNumbers({
   millis,
   easeOut,
 }: {
-  num?: number;
-  to?: number;
-  from?: number;
-  millis?: number;
-  easeOut?: boolean;
+  num?: number
+  to?: number
+  from?: number
+  millis?: number
+  easeOut?: boolean
 }) {
-  const [currentValue, ref] = useNumberRolling(num, to, from, millis, easeOut);
+  const [currentValue, ref] = useNumberRolling(num, to, from, millis, easeOut)
 
-  return <span ref={ref}>{currentValue}</span>;
+  return <span ref={ref}>{currentValue}</span>
 }

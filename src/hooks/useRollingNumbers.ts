@@ -1,6 +1,6 @@
-import { useInView } from "react-intersection-observer";
-import { useEffect, useState } from "react";
-import { customEaseOut } from "../lib/customEaseOut";
+import { useInView } from 'react-intersection-observer'
+import { useEffect, useState } from 'react'
+import { customEaseOut } from '../lib/customEaseOut'
 
 export default function useNumberRolling(
   to: number = 0,
@@ -9,47 +9,47 @@ export default function useNumberRolling(
   millis: number = 500,
   easeOut: boolean = false
 ): [number, (node: HTMLSpanElement | null) => void] {
-  const [currentValue, setCurrentValue] = useState(from);
+  const [currentValue, setCurrentValue] = useState(from)
   const { ref, inView } = useInView({
     threshold: 0,
-  });
+  })
 
   useEffect(() => {
     if (inView) {
-      setCurrentValue(from);
+      setCurrentValue(from)
     }
-  }, [inView]);
+  }, [inView])
 
   useEffect(() => {
-    let animationFrame: number;
-    let startTime: number;
+    let animationFrame: number
+    let startTime: number
 
     const updateValue = (timestamp: number) => {
       if (!startTime) {
-        startTime = timestamp;
+        startTime = timestamp
       }
 
-      const progress = Math.min((timestamp - startTime) / millis, 1);
-      const easedProgress = easeOut ? customEaseOut(progress) : progress;
+      const progress = Math.min((timestamp - startTime) / millis, 1)
+      const easedProgress = easeOut ? customEaseOut(progress) : progress
 
-      const easedValue = from + (num - from) * easedProgress;
-      setCurrentValue(Math.round(easedValue));
+      const easedValue = from + (num - from) * easedProgress
+      setCurrentValue(Math.round(easedValue))
 
       if (progress < 1) {
-        animationFrame = requestAnimationFrame(updateValue);
+        animationFrame = requestAnimationFrame(updateValue)
       } else {
-        setCurrentValue(num);
+        setCurrentValue(num)
       }
-    };
+    }
 
     if (inView) {
-      animationFrame = requestAnimationFrame(updateValue);
+      animationFrame = requestAnimationFrame(updateValue)
     }
 
     return () => {
-      cancelAnimationFrame(animationFrame);
-    };
-  }, [num, from, inView, millis, easeOut]);
+      cancelAnimationFrame(animationFrame)
+    }
+  }, [num, from, inView, millis, easeOut])
 
-  return [currentValue, ref];
+  return [currentValue, ref]
 }

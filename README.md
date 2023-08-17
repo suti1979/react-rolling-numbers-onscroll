@@ -1,4 +1,4 @@
-# React rolling numbers onscroll
+# React rolling numbers onscroll (NPM package)
 
 A React component for animate (roll) numbers from zero (or the "from" number) to the actual number.
 
@@ -6,15 +6,23 @@ Animation starts, when the element is in the view.
 
 You can add an "easeOut" prop for a smooth ending.
 
+### Install:
+
+```console
+npm install react-rolling-numbers-onscroll
+or
+yarn add react-rolling-numbers-onscroll
+```
+
 ### Import:
 
 ```js
-import RollingNumbers from "react-rolling-numbers-onscroll";
+import RollingNumbers from 'react-rolling-numbers-onscroll'
 ```
 
 ### Usage:
 
-```js
+```jsx
 <RollingNumbers to={42} />
 <RollingNumbers to={42} from={-42} />
 <RollingNumbers to={42} from={-42} millis={4000} />
