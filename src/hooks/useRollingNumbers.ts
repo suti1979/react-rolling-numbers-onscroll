@@ -1,10 +1,13 @@
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
+import { customEaseOut } from "../lib/customEaseOut";
 
 export default function useNumberRolling(
-  num: number,
+  to: number = 0,
+  num: number = to || 0,
   from: number = 0,
-  millis: number = 500
+  millis: number = 500,
+  easeOut: boolean = false
 ): [number, (node: HTMLSpanElement | null) => void] {
   const [currentValue, setCurrentValue] = useState(from);
   const { ref, inView } = useInView({
@@ -18,26 +21,21 @@ export default function useNumberRolling(
   }, [inView]);
 
   useEffect(() => {
-    const startTime = performance.now();
-    const endTime = startTime + millis;
-    const increment = (num - from) / millis;
-
     let animationFrame: number;
+    let startTime: number;
 
-    const updateValue = () => {
-      const currentTime = performance.now();
+    const updateValue = (timestamp: number) => {
+      if (!startTime) {
+        startTime = timestamp;
+      }
 
-      if (currentTime < endTime) {
-        const timePassed = currentTime - startTime;
-        setCurrentValue(
-          Math.min(
-            Math.max(
-              Math.round(increment * timePassed) + from,
-              Math.min(from, num)
-            ),
-            Math.max(from, num)
-          )
-        );
+      const progress = Math.min((timestamp - startTime) / millis, 1);
+      const easedProgress = easeOut ? customEaseOut(progress) : progress;
+
+      const easedValue = from + (num - from) * easedProgress;
+      setCurrentValue(Math.round(easedValue));
+
+      if (progress < 1) {
         animationFrame = requestAnimationFrame(updateValue);
       } else {
         setCurrentValue(num);
@@ -51,7 +49,7 @@ export default function useNumberRolling(
     return () => {
       cancelAnimationFrame(animationFrame);
     };
-  }, [num, from, inView, millis]);
+  }, [num, from, inView, millis, easeOut]);
 
   return [currentValue, ref];
 }

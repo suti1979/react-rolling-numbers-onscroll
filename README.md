@@ -1,30 +1,40 @@
 # React rolling numbers onscroll
 
 A React component for animate (roll) numbers from zero (or the "from" number) to the actual number.
-Starts, when the element is in the view.
 
-## Import:
+Animation starts, when the element is in the view.
 
-- `import RollingNumbers from "react-rolling-numbers-onscroll"`
+You can add an "easeOut" prop for a smooth ending.
 
-## Usage:
+### Import:
 
-`<RollingNumbers num={42} />`
+```js
+import RollingNumbers from "react-rolling-numbers-onscroll";
+```
 
-`<RollingNumbers num={42} from={-42} />`
+### Usage:
 
-`<RollingNumbers num={42} from={-42} millis={1000}/>`
+```js
+<RollingNumbers to={42} />
+<RollingNumbers to={42} from={-42} />
+<RollingNumbers to={42} from={-42} millis={4000} />
+<RollingNumbers to={-42} from={42} millis={4000} easeOut />
+```
 
-- num: Integer to roll up from 0
-- from (optional): Integer to roll up to "num"
-- millis (optional): milliseconds for animation effect. By default it is 500.
+### Props (all optional):
 
-The animation starts, when the element is in the view.
+```console
+- to (or num): Integer to roll up from 0
+- from: Integer roll to "num"
+- millis: milliseconds for animation effect. By default it is 500.
+- easeOut: ease out the end of the animation
+```
 
-That's it for now.
+Feel free to ask or contribute.
 
-Feel free to ask or contribute. ;)
+### CHANGELOG:
 
-CHANGELOG:
-
+- 1.0.0 - Base version
 - 1.1.0 - Added "from" prop.
+  - 1.1.1 - Update readme
+- 1.2.0 - Added "ease Out" function. Added "to" prop instead of "num" prop. The "num" prop still works, so it's not a breaking change. You can use either of them, it just makes more sense to use "to" prop.
