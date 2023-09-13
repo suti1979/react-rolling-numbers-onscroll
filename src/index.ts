@@ -1,2 +1,3 @@
-const RollingNumbers = require('./components/RollingNumbers')
-module.exports = RollingNumbers
+import RollingNumbers from './components/RollingNumbers'
+
+export default RollingNumbers
