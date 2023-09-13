@@ -46,3 +46,4 @@ Feel free to ask or contribute.
 - 1.1.0 - Added "from" prop.
   - 1.1.1 - Update readme
 - 1.2.0 - Added "ease Out" function. Added "to" prop instead of "num" prop. The "num" prop still works, so it's not a breaking change. You can use either of them, it just makes more sense to use "to" prop.
+  - 1.2.1 - Changed import for mjs.
