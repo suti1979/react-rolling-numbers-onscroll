@@ -1,12 +1,9 @@
 {
   "name": "react-rolling-numbers-onscroll",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "react rolling numbers onscroll",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "exports": {
-    "./components/RollingNumbers": "./components/RollingNumbers.js"
-  },
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build"
