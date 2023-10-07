@@ -6,6 +6,8 @@ Animation starts, when the element is in the view.
 
 You can add an "easeOut" prop for a smooth ending.
 
+Try it on Codesandbox: https://codesandbox.io/p/sandbox/npm-package-react-rolling-numbers-onscroll-jxmzpm
+
 ### Install:
 
 ```console
@@ -47,3 +49,5 @@ Feel free to ask or contribute.
   - 1.1.1 - Update readme
 - 1.2.0 - Added "ease Out" function. Added "to" prop instead of "num" prop. The "num" prop still works, so it's not a breaking change. You can use either of them, it just makes more sense to use "to" prop.
   - 1.2.1 - Changed import for mjs.
+
+-1.3.0 - Fixed package.json for react 16 to 18.
